@@ -9,7 +9,7 @@
 
 	// https://developer.chrome.com/extensions/manifest/name#name
 	// maximum of 45 characters
-	"name": "Chrome extension template"
+	"name": "Chrome tabs switcher"
 
 	// https://developer.chrome.com/extensions/manifest/version
 	"version": "0.0.1"
@@ -21,7 +21,7 @@
 
 	// https://developer.chrome.com/extensions/manifest/description
 	// maximum of 132 characters
-	"description": "Chrome extension template structure"
+	"description": "Chrome extension for tabs switching"
 
 	// https://developer.chrome.com/extensions/manifest/icons
 	"icons": {
@@ -32,15 +32,15 @@
 
 	// Pick one (or none)
 	// https://developer.chrome.com/extensions/browserAction
-	"browser_action": {
-		"default_icon": {							// optional
-			"16": "icons/action-icon16.png"		// optional
-			"24": "icons/action-icon24.png"		// optional
-			"32": "icons/action-icon32.png"		// optional
-		},
-		"default_title": "Browser action title."	// optional; shown in tooltip
-		"default_popup": "popup.html"				// optional
-	}
+	// "browser_action": {
+		// "default_icon": {							// optional
+			// "16": "icons/action-icon16.png"		// optional
+			// "24": "icons/action-icon24.png"		// optional
+			// "32": "icons/action-icon32.png"		// optional
+		// },
+		// "default_title": "Chrome tabs switcher"	// optional; shown in tooltip
+		// "default_popup": "popup.html"				// optional
+	// }
 
 	// https://developer.chrome.com/extensions/pageAction
 	// "page_action": {
@@ -64,7 +64,7 @@
 		"scripts": ["js/eventPage.js"]
 		// Recommended
 		// https://developer.chrome.com/extensions/event_pages
-		"persistent": false
+		"persistent": true
 		// Notice that without the "persistent" key, you have a regular background page.
 		// Persistence is what differentiates an event page from a background page.
 	}
@@ -99,7 +99,7 @@
 			// "match_about_blank": false
 			"css": ["css/contentstyles.css"]
 			"js": ["js/contentscript.js"]
-			// "run_at": "document_idle" // document_idle, document_start, document_end
+			"run_at": "document_idle" // document_idle, document_start, document_end
 			// "all_frames": false
 			// "include_globs": []
 			// "exclude_globs": []
@@ -245,7 +245,7 @@
 		// "system.memory"
 		// "system.storage"
 		// "tabCapture"
-		// "tabs"
+		"tabs"
 		// "topSites"
 		// "tts"
 		// "ttsEngine"
