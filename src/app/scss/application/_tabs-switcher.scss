@@ -1,0 +1,60 @@
+@import './partials/_tabs-search.scss';
+@import './partials/_tabs-list.scss';
+@import './partials/_tabs-card.scss';
+
+.tabs-switcher * {
+  box-sizing: border-box;
+}
+
+.tabs-switcher {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+  transition: background-color .3s linear;
+
+  font-size: 16px;
+  line-height: 18px;
+  color: #777;
+
+  z-index: 200000;
+
+  .tabs-switcher--content {
+    display: none;
+    width: 80vw;
+    max-width: 1200px;
+    height: 75vh;
+    max-height: 1000px;
+    padding: 25px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+  }
+
+  &.active {
+    background: rgba(0, 0, 0, 0.1);
+
+    .tabs-switcher--content {
+      display: block;
+      pointer-events: all;
+    }
+
+  }
+
+  .tabs-switcher-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    height: 100%;
+  }
+}

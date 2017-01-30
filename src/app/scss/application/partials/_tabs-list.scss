@@ -1,0 +1,20 @@
+.tabs-switcher--list-holder {
+  flex-basis: 100%;
+  overflow: scroll;
+
+  .tabs-switcher--list {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .tabs-switcher--list-item {
+    padding-top: 10px;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+}
