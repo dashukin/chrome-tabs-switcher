@@ -1,6 +1,59 @@
 .tabs-switcher--list-holder {
   flex-basis: 100%;
-  overflow: scroll;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  &:hover::-webkit-scrollbar {
+    transition-delay: .5s;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(96, 97, 98, 0.1);
+    border: 0px none #ffffff;
+    border-radius: 12px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: rgba(96, 97, 98, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 97, 98, 0.7);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: #7e7e7e;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-track:active {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
 
   .tabs-switcher--list {
     display: block;
@@ -10,7 +63,7 @@
   }
 
   .tabs-switcher--list-item {
-    padding-top: 10px;
+    padding: 10px;
 
     &:first-child {
       padding-top: 0;
