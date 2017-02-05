@@ -12,7 +12,7 @@
 	"name": "Chrome tabs switcher"
 
 	// https://developer.chrome.com/extensions/manifest/version
-	"version": "0.0.1"
+	"version": "0.7.1"
 
 	// Recommended
 
@@ -21,7 +21,7 @@
 
 	// https://developer.chrome.com/extensions/manifest/description
 	// maximum of 132 characters
-	"description": "Chrome extension for tabs switching"
+	"description": "Chrome extension for easy switching between tabs"
 
 	// https://developer.chrome.com/extensions/manifest/icons
 	"icons": {
@@ -54,7 +54,7 @@
 	//}
 
 	// Optional
-	"author": "",
+	"author": "Vasili Molakhau <dashukin@gmail.com>",
 
 	// https://developer.chrome.com/extensions/automation
 	// "automation": "",
@@ -271,7 +271,7 @@
 
 	// https://developer.chrome.com/extensions/manifest/name#short_name
 	// maximum of 12 characters
-	"short_name": "Template"
+	"short_name": "Tabs"
 
 	// TODO: get description url
 	// "signature": ''
