@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension-template",
-  "version": "0.0.1",
+  "version": "0.7.1",
   "description": "Chrome extension base template",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "extension",
     "template"
   ],
-  "author": "Vasili Molakhau",
+  "author": "Vasili Molakhau <dashukin@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dashukin/chrome-extension-template/issues"
@@ -37,9 +37,11 @@
     "gulp-sass": "^2.3.2",
     "gulp-webpack": "^1.5.0",
     "gulp-zip": "^3.2.0",
+    "material-ui": "^0.16.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "run-sequence": "^1.2.2",
     "webpack": "^1.13.3"
