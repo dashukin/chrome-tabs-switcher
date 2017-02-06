@@ -47,7 +47,8 @@ export default class TabsList extends React.Component {
 		this.props.onItemClicked(windowId, index);
 	}
 
-	closeTab (id) {
+	closeTab (id, e) {
+		e.stopPropagation();
 		this.props.onCrossIconClicked(id);
 	}
 
