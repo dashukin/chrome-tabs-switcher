@@ -14,6 +14,7 @@
   height: 100vh;
   z-index: 200000;
   pointer-events: none;
+  display: block !important;
 
   .tabs-switcher--wrapper {
     width: 100%;
