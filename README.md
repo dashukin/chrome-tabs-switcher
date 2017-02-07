@@ -13,4 +13,4 @@ Chrome extension for easy switching between tabs.
 ## Installation
 
 Install application from the chrome webstore:
-- TBD
+- https://chrome.google.com/webstore/detail/chrome-tabs-switcher/blnlokddecelmlhfpnmeekjcfdfapmjl
