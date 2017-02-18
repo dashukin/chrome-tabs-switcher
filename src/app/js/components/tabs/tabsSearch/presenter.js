@@ -5,14 +5,19 @@ export default class TabsSearch extends React.Component {
 
 	constructor (props) {
 		super(props);
-
 		this.searchInput = null;
 	}
 
 	componentDidMount () {
+		this.setFocus();
+	}
 
+	componentDidUpdate () {
+		this.setFocus();
+	}
+
+	setFocus () {
 		this.searchInput && this.searchInput.focus();
-
 	}
 
 	render () {

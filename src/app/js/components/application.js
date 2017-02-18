@@ -264,6 +264,12 @@ export default class Application extends React.Component {
 		} else if (e.which === 13) {
 			let {selectedIndex} = this.state;
 			this.switchTabBySelectedIndex(selectedIndex);
+		} else if (e.which === 9) {
+			e.preventDefault();
+
+			this.processResultSelection({
+				reverse: e.shiftKey
+			});
 		}
 
 	}

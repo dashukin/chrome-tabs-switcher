@@ -14,7 +14,7 @@
 	"name": "Chrome tabs switcher"
 
 	// https://developer.chrome.com/extensions/manifest/version
-	"version": "0.7.5"
+	"version": "0.7.6"
 
 	// Recommended
 
