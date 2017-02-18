@@ -2,12 +2,19 @@
 @import './partials/_tabs-list.scss';
 @import './partials/_tabs-card.scss';
 
-.tabs-switcher * {
-  box-sizing: border-box;
-}
 
 #tabs-switcher {
   display: block !important;
+}
+
+.tabs-switcher,
+// use universla selector to reset some possibly conflicting styles coming from outside of application
+.tabs-switcher * {
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  float: none;
 }
 
 .tabs-switcher {
