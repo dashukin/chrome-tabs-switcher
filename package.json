@@ -1,6 +1,6 @@
 {
     "name": "chrome-extension-template",
-    "version": "0.7.3",
+    "version": "0.7.5",
     "description": "Chrome extension base template",
     "main": "index.js",
     "scripts": {
