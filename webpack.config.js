@@ -1,7 +1,7 @@
 /**
  * @nape webpack
  * @type {Object}
- * @property NoErrorsPlugin
+ * @property NoEmitOnErrorsPlugin
  */
 
 var webpack = require('webpack');
@@ -23,6 +23,6 @@ module.exports = {
 		}]
 	},
 	plugins: [
-		new webpack.NoErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin()
 	]
 };
