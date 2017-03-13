@@ -1,0 +1,28 @@
+.navigation-bar {
+  position: absolute;
+  left: 100%;
+  top: -1px;
+
+  .navigation-bar__holder {
+    padding: 3px;
+    background: #fff;
+    border-left: 1px solid rgb(221, 221, 221);
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
+
+    $link: '.navigation-bar__link';
+
+    #{$link} {
+      display: inline-block;
+      vertical-align: bottom;
+      outline: none;
+    }
+
+    #{$link}--configuration {
+
+    }
+  }
+
+
+
+}
