@@ -1,10 +1,13 @@
 // Content script
 
-import appConfig from './app.config';
+import appConfig from './application/app.config';
 import React from 'react';
 import ReactDom from 'react-dom';
-import Application from './components/application';
+import Application from './application/';
+import * as reducers from './application/reducer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
 
 let appId = String.prototype.toLowerCase.call(appConfig.appId || '').replace(/\s/g, '');
 
@@ -20,6 +23,13 @@ const App = () => {
 			<Application />
 		</MuiThemeProvider>
 	);
-}
+};
 
-ReactDom.render(<App/>, appHolder);
+const appStore = createStore(combineReducers(reducers));
+
+ReactDom.render(
+	<Provider store={appStore}>
+		<App/>
+	</Provider>,
+	appHolder
+);

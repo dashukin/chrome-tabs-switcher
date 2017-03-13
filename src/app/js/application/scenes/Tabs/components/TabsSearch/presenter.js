@@ -25,7 +25,7 @@ export default class TabsSearch extends React.Component {
 		let {filter = '', onChange, onKeyDown} = this.props;
 
 		return (
-			<div className="tabs-switcher--search-holder">
+			<div className="tabs-switcher__search-holder">
 				<TextField
 					fullWidth={true}
 					ref={input => this.searchInput = input}

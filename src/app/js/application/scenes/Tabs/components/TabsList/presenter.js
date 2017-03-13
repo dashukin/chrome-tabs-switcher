@@ -54,7 +54,7 @@ export default class TabsList extends React.Component {
 
 	render () {
 
-		let {tabs, selectedIndex} = this.props;
+		let {tabs = [], selectedIndex} = this.props;
 
 		let tabsList = tabs.map((tab, tabsCollectionIndex) => {
 
@@ -101,7 +101,7 @@ export default class TabsList extends React.Component {
 
 		return (
 			<div
-				className="tabs-switcher--list-holder"
+				className="tabs-switcher__list-holder"
 				ref={element => this.rootElement = element}
 			>
 				<SelectableList
