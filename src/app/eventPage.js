@@ -34,13 +34,11 @@
 import Promise from 'bluebird';
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-
-	let {name} = request;
+	const {name} = request;
 
 	switch (name) {
 		case 'getTabs':
-
-			let {id: tabId, windowId: senderWindowId} = sender.tab;
+			const {id: tabId, windowId: senderWindowId} = sender.tab;
 
 			chrome.tabs.query({
 				//currentWindow: data.currentWindow
@@ -54,19 +52,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 			break;
 
 		case 'highlightTab':
-			let {index, windowId} = request;
+			const {index, windowId} = request;
 
 			highlightTab(windowId, index);
 
 			break;
 
 		case 'closeTab':
-			let {id} = request;
+			const {id} = request;
+
 			chrome.tabs.remove(id, r => {
 				chrome.tabs.query({
 					currentWindow: true
 				}, (tabs) => {
-					let [{index, windowId}] = tabs.filter(tab => {
+					const [{index, windowId}] = tabs.filter(tab => {
 						return tab.id === sender.tab.id
 					});
 					highlightTab(windowId, index);
@@ -130,22 +129,19 @@ function highlightTab (windowId, index) {
 		windowId,
 		highlighted: true
 	}, (tabs) => {
-
-		let promises = [];
+		const promises = [];
 
 		// reset "highlighted" property for all tabs
 		tabs.forEach(tab => {
-			let promise = new Promise((resolve, reject) => {
+			const promise = new Promise((resolve, reject) => {
 				chrome.tabs.update(tab.id, {
 					highlighted: false
 				}, r => resolve());
 			});
 			promises.push(promise);
-			promises.push(promise);
 		});
 
 		Promise.all(promises).then(() => {
-
 			// switch to target window if it's not the current one
 			if (windowId !== chrome.windows.WINDOW_ID_CURRENT) {
 				chrome.windows.update(windowId, {

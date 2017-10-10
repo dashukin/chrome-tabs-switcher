@@ -19,7 +19,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import NavigationBar from './components/NavigationBar';
 import {Tabs} from './scenes';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // App actions
 import {
@@ -34,8 +33,6 @@ import {
 	updateTabs,
 	setWindowId
 } from './scenes/Tabs/actions';
-
-injectTapEventPlugin();
 
 class Application extends React.Component {
 

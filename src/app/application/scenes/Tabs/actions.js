@@ -10,9 +10,9 @@ const {
 	INCREMENT_SELECTED_INDEX,
 	DECREMENT_SELECTED_INDEX,
 	SWITCH_TAB_BY_SELECTED_INDEX,
-	UPDATE_TABS,
-	CLOSE_TAB,
-	SWITCH_TAB,
+	TABS_UPDATE,
+	TABS_CLOSE,
+	TABS_SWITCH,
 	SET_WINDOW_ID
 } = constants;
 
@@ -49,15 +49,14 @@ export const resetTabsFilter = () => {
 
 export const closeTab = (id) => {
 	return {
-		type: CLOSE_TAB,
+		type: TABS_CLOSE,
 		id
 	}
 }
 
 export const switchTab = (windowId, index) => {
-	console.warn(windowId, index);
 	return {
-		type: SWITCH_TAB,
+		type: TABS_SWITCH,
 		windowId,
 		index
 	}
@@ -65,7 +64,7 @@ export const switchTab = (windowId, index) => {
 
 export const updateTabs = (tabs) => {
 	return {
-		type: UPDATE_TABS,
+		type: TABS_UPDATE,
 		tabs
 	}
 };

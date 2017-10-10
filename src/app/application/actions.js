@@ -1,20 +1,20 @@
 import constants from './constants';
 const {
-	OPEN_APP,
-	CLOSE_APP,
+	APP_OPEN,
+	APP_CLOSE,
 	TOGGLE_CONFIGURATION_SCREEN,
 	CONFIGURATION_SCREEN
 } = constants;
 
 export const openApp = () => {
 	return {
-		type: OPEN_APP
+		type: APP_OPEN
 	}
 };
 
 export const closeApp = () => {
 	return {
-		type: CLOSE_APP
+		type: APP_CLOSE
 	};
 };
 
