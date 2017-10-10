@@ -1,25 +1,30 @@
 // Content script
 
-import appConfig from './application/app.config';
-import React from 'react';
-import ReactDom from 'react-dom';
+import appConfig from	'./application/config';
+import React from		'react';
+import ReactDom from	'react-dom';
 import Application from './application/';
 import * as reducers from './application/reducer';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import createMuiTheme		from 'material-ui/styles/createMuiTheme';
+import {MuiThemeProvider}	from 'material-ui/styles';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
-let appId = String.prototype.toLowerCase.call(appConfig.appId || '').replace(/\s/g, '');
+const appId = String.prototype.toLowerCase.call(appConfig.appId || '').replace(/\s/g, '');
 
-let appHolder = document.createElement('div');
+const appHolder = document.createElement('div');
 appHolder.id = appId;
 appHolder.className = appId;
 
 document.body.appendChild(appHolder);
 
+const muiTheme = createMuiTheme({
+
+});
+
 const App = () => {
 	return (
-		<MuiThemeProvider>
+		<MuiThemeProvider theme={muiTheme}>
 			<Application />
 		</MuiThemeProvider>
 	);
