@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 
-export default class TabsSearch extends React.Component {
+class TabsSearch extends Component {
 
 	constructor (props) {
 		super(props);
@@ -28,14 +28,18 @@ export default class TabsSearch extends React.Component {
 			<div className="tabs-switcher__search-holder">
 				<TextField
 					fullWidth={true}
-					ref={input => this.searchInput = input}
-					hintText="Type to filter..."
 					defaultValue={filter}
 					onChange={onChange}
 					onKeyDown={onKeyDown}
+					InputProps={{
+						placeholder: 'Type to filter...',
+						inputRef: input => this.searchInput = input
+					}}
 				/>
 			</div>
 		);
 	}
 
 }
+
+export default TabsSearch;

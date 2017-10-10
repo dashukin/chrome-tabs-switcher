@@ -5,11 +5,11 @@
 import keymirror from 'keymirror';
 
 export default keymirror({
-	OPEN_APP: null,
-	CLOSE_APP: null,
-	CLOSE_TAB: null,
-	SWITCH_TAB: null,
-	UPDATE_TABS: null,
+	APP_OPEN: null,
+	APP_CLOSE: null,
+	TABS_CLOSE: null,
+	TABS_SWITCH: null,
+	TABS_UPDATE: null,
 	SET_WINDOW_ID: null,
 	APPLY_TABS_FILTER: null,
 	RESET_TABS_FILTER: null,

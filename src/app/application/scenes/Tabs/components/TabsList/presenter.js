@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import {List, ListItem, makeSelectable} from 'material-ui/List';
-import ActionClose from 'material-ui/svg-icons/content/clear';
-import {cyan800} from 'material-ui/styles/colors';
-import Avatar from 'material-ui/Avatar';
+import React, {Component}	from 'react';
+import ReactDom				from 'react-dom';
+import List, {ListItem, ListItemText, ListItemSecondaryAction}
+							from 'material-ui/List';
+import IconButton			from 'material-ui/IconButton';
+import Avatar				from 'material-ui/Avatar';
+import IconClose			from 'material-ui-icons/Clear';
 
-const SelectableList = makeSelectable(List);
 
-export default class TabsList extends React.Component {
+class TabsList extends Component {
 
 	constructor (props) {
 		super(props);
@@ -53,20 +53,15 @@ export default class TabsList extends React.Component {
 	}
 
 	render () {
-
-		let {tabs = [], selectedIndex} = this.props;
-
-		let tabsList = tabs.map((tab, tabsCollectionIndex) => {
+		const {tabs = [], selectedIndex} = this.props;
+		const tabsList = tabs.map((tab, tabsCollectionIndex) => {
 
 			let {title, url, windowId, index, id, favIconUrl} = tab;
 
 			let favicon = <Avatar
 				size={30}
 				src={favIconUrl}
-				style={{
-					background: 'transparent',
-					borderRadius: 'none'
-				}}/>;
+			/>;
 
 			let outputAvatar = this.isSecureProtocol
 				? (/https/.test(favIconUrl)
@@ -78,23 +73,23 @@ export default class TabsList extends React.Component {
 				<ListItem
 					key={tab.id}
 					value={tabsCollectionIndex}
-					primaryText={title}
 					ref={listItem => {
 						if (tabsCollectionIndex === selectedIndex) {
 							this.selectedListItem = listItem;
 						}
 					}}
-					secondaryText={url}
 					onClick={this.switchTab.bind(this, windowId, index)}
-					rightIcon={
-						<ActionClose
-							hoverColor={cyan800}
-							onClick={this.closeTab.bind(this, id)}
-						/>
-					}
-					hoverColor='rgba(0,0,0, 0.05)'
-					leftAvatar={outputAvatar}
-				/>
+				>
+					{outputAvatar}
+					<ListItemText primary={title} secondary={url} />
+					<ListItemSecondaryAction>
+						<IconButton>
+							<IconClose
+								onClick={this.closeTab.bind(this, id)}
+							/>
+						</IconButton>
+					</ListItemSecondaryAction>
+				</ListItem>
 			);
 
 		})
@@ -104,14 +99,13 @@ export default class TabsList extends React.Component {
 				className="tabs-switcher__list-holder"
 				ref={element => this.rootElement = element}
 			>
-				<SelectableList
-					defaultValue={0}
-					value={selectedIndex}
-				>
+				<List>
 					{tabsList}
-				</SelectableList>
+				</List>
 			</div>
 		);
 	}
 
 }
+
+export default TabsList;

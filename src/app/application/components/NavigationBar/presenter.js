@@ -2,15 +2,15 @@
 * Navigation bar component
 * */
 
-import React from 'react';
-import ConfigurationIcon from 'material-ui/svg-icons/action/settings';
-import TabsIcon from 'material-ui/svg-icons/action/reorder';
-import constants from '../../constants';
+import React, {Component} from 'react';
+import ConfigurationIcon from	'material-ui-icons/Settings';
+import TabsIcon from			'material-ui-icons/Reorder';
+import constants from			'constants';
 const {
 	CONFIGURATION_SCREEN
 } = constants;
 
-class NavigationBar extends React.Component {
+class NavigationBar extends Component {
 
 	constructor (props) {
 		super(props);
@@ -19,7 +19,6 @@ class NavigationBar extends React.Component {
 	render () {
 
 		let regularColor = 'rgba(29, 82, 88, 0.3)';
-		let hoverColor = 'rgba(29, 82, 88, 0.7)';
 		let activeColor = 'rgba(29, 82, 88, 0.6)';
 
 		let configurationColor = this.props.screen === CONFIGURATION_SCREEN ? activeColor : regularColor;
@@ -33,7 +32,6 @@ class NavigationBar extends React.Component {
 						onClick={this.props.toggleConfigurationScreen}>
 						<ConfigurationIcon
 							color={configurationColor}
-							hoverColor={hoverColor}
 						/>
 					</a>
 					<a
@@ -41,7 +39,6 @@ class NavigationBar extends React.Component {
 						href="javascript:void(0);">
 						<TabsIcon
 							color={regularColor}
-							hoverColor={hoverColor}
 						/>
 					</a>
 				</div>

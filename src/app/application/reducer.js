@@ -2,8 +2,8 @@ import TabsReducer from './scenes/Tabs/reducer';
 import constants from './constants';
 
 const {
-	OPEN_APP,
-	CLOSE_APP,
+	APP_OPEN,
+	APP_CLOSE,
 	TOGGLE_CONFIGURATION_SCREEN,
 	TABS_SCREEN,
 	CONFIGURATION_SCREEN
@@ -18,11 +18,11 @@ const AppReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 
-		case OPEN_APP:
+		case APP_OPEN:
 			return {...state, active: true};
 			break;
 
-		case CLOSE_APP:
+		case APP_CLOSE:
 			return {...state, active: false};
 			break;
 

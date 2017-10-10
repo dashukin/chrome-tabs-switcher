@@ -13,9 +13,9 @@ const {
 	INCREMENT_SELECTED_INDEX,
 	DECREMENT_SELECTED_INDEX,
 	SWITCH_TAB_BY_SELECTED_INDEX,
-	UPDATE_TABS,
-	SWITCH_TAB,
-	CLOSE_TAB,
+	TABS_UPDATE,
+	TABS_SWITCH,
+	TABS_CLOSE,
 	SET_WINDOW_ID
 } = constants;
 
@@ -168,18 +168,18 @@ const tabsReducer = (state = initialState, action) => {
 			return state;
 			break;
 
-		case SWITCH_TAB:
+		case TABS_SWITCH:
 			switchTab(action.windowId, action.index);
 			return state;
 			break;
 
-		case CLOSE_TAB:
+		case TABS_CLOSE:
 			// TODO: move to container's method???
 			closeTab(action.id);
 			return state;
 			break;
 
-		case UPDATE_TABS:
+		case TABS_UPDATE:
 			let {tabs} = action;
 			filteredTabs = filterTabs({
 				tabs,
