@@ -4,10 +4,13 @@
  * @property on
  */
 
+/*global
+	require
+ */
+
 /**
  * @name webpack
  * @property DefinePlugin
- * @property DedupePlugin
  * @property UglifyJsPlugin
  */
 
@@ -21,7 +24,7 @@
 import gulp from 'gulp';
 import del from 'del';
 import sass from 'gulp-sass';
-import webpack from 'webpack';
+import webpack3 from 'webpack';
 import gulpWebpack from 'gulp-webpack';
 import webpackConfig from './webpack.config';
 import gulpHjson from 'gulp-hjson';
@@ -30,6 +33,7 @@ import zip from 'gulp-zip';
 import runSequence from 'run-sequence';
 import yargs from 'yargs';
 import fsExtra from 'fs-extra';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 const {argv} = yargs;
 
@@ -38,7 +42,7 @@ const encoding = 'utf8';
 // src paths
 const packageSrcPath = './package.json';
 const appSrcPath = './src/app';
-const jsSrcPath = `${appSrcPath}/js/**/*.js`;
+const jsSrcPath = `${appSrcPath}/**/*.js`;
 const scssSrcPath = `${appSrcPath}/scss/**/*.scss`;
 const manifestSrcPath = `${appSrcPath}/manifest.hjson`;
 const staticFilesSrcFiles = [`${appSrcPath}/**/*`, `!${jsSrcPath}`, `!${scssSrcPath}`, `!${manifestSrcPath}`];
@@ -84,36 +88,63 @@ gulp.task('watch-scss', () => {
 
 gulp.task('build-js:dev', () => {
 	return gulp.src(jsSrcPath)
-		.pipe(gulpWebpack(webpackConfig))
+		.pipe(gulpWebpack(webpackConfig, webpack3))
 		.pipe(gulp.dest(jsBuildPath));
 });
 
 gulp.task('watch-js:dev', () => {
+	const devWatchConfig = Object.create(webpackConfig);
 
-	let devWatchConfig = Object.create(webpackConfig);
 	devWatchConfig.watch = true;
+	devWatchConfig.plugins = devWatchConfig.plugins.concat([
+		new ProgressBarPlugin({
+			clear: false
+		})
+	])
 
 	return gulp.src(jsSrcPath)
-		.pipe(gulpWebpack(devWatchConfig))
+		.pipe(gulpWebpack(devWatchConfig, webpack3))
 		.pipe(gulp.dest(jsBuildPath));
 });
 
 gulp.task('build-js:prod', () => {
-
-	let prodConfig = Object.create(webpackConfig);
+	const prodConfig = Object.create(webpackConfig);
 
 	prodConfig.plugins = prodConfig.plugins.concat(
-		new webpack.DefinePlugin({
+		new webpack3.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify("production")
 			}
 		}),
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack3.LoaderOptionsPlugin({
+			minimize: true,
+			debug: false
+		}),
+		new webpack3.optimize.AggressiveMergingPlugin(),
+		new webpack3.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+				screw_ie8: true,
+				conditionals: true,
+				unused: true,
+				comparisons: true,
+				sequences: true,
+				dead_code: true,
+				evaluate: true,
+				if_return: true,
+				join_vars: true
+			},
+			output: {
+				comments: false,
+			},
+		}),
+		new ProgressBarPlugin({
+			clear: false
+		})
 	)
 
 	return gulp.src(jsSrcPath)
-		.pipe(gulpWebpack(prodConfig))
+		.pipe(gulpWebpack(prodConfig, webpack3))
 		.pipe(gulp.dest(jsBuildPath));
 });
 
@@ -137,8 +168,8 @@ gulp.task('watch-static', () => {
 });
 
 gulp.task('version', () => {
-	let packageData = require(packageSrcPath);
-	let {version} = packageData;
+	const packageData = require(packageSrcPath);
+	const {version} = packageData;
 	let [major = 0, minor = 0, patch = 0] = version.split('.').map(version => {
 		return +version;
 	});
@@ -159,15 +190,14 @@ gulp.task('version', () => {
 		return;
 	}
 
-	let newVersion = [major, minor, patch].join('.');
+	const newVersion = [major, minor, patch].join('.');
 
 	packageData.version = newVersion;
 
 	fsExtra.writeFileSync(packageSrcPath, JSON.stringify(packageData, null, 4), encoding);
 
-	let manifestText = fsExtra.readFileSync(manifestSrcPath, encoding);
-
-	let manifestData = hjson.rt.parse(manifestText, hjsonConfig);
+	const manifestText = fsExtra.readFileSync(manifestSrcPath, encoding);
+	const manifestData = hjson.rt.parse(manifestText, hjsonConfig);
 
 	manifestData.version = newVersion;
 
