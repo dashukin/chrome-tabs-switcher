@@ -1,3 +1,6 @@
+/*global
+	require, module, __dirname
+ */
 /**
  * @nape webpack
  * @type {Object}
@@ -5,24 +8,30 @@
  */
 
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 	entry: {
-		eventPage: './src/app/js/eventPage',
-		contentscript: './src/app/js/contentscript',
-		popup: './src/app/js/popup'
+		eventPage: './src/app/eventPage',
+		contentscript: './src/app/contentscript',
+		popup: './src/app/popup'
 	},
 	output: {
 		filename: '[name].js'
 	},
 	module: {
-		loaders: [{
-			test: /\.js/,
-			exclude: '/node_modules/',
+		rules: [{
+			test: /jsx?$/,
+			exclude: /node_modules/,
 			loader: 'babel-loader'
 		}]
 	},
 	plugins: [
 		new webpack.NoEmitOnErrorsPlugin()
-	]
+	],
+	resolve: {
+		alias: {
+			constants: path.resolve(__dirname, './src/app/application/constants')
+		}
+	}
 };
