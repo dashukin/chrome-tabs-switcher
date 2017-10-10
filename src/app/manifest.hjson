@@ -104,7 +104,7 @@
 			// "exclude_matches": []
 			// "match_about_blank": false
 			"css": [
-				"css/contentstyles.css"
+				"css/content.css"
 			]
 			"js": [
 				"js/contentscript.js"

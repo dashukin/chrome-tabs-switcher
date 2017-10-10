@@ -1,0 +1,86 @@
+@import 'partials/tabs-search';
+@import 'partials/tabs-list';
+@import 'partials/tabs-card';
+@import 'partials/navigation-bar';
+
+
+#tabs-switcher {
+	display: block !important;
+}
+
+.tabs-switcher,
+	// use universla selector to reset some possibly conflicting styles coming from outside of application
+.tabs-switcher * {
+	box-sizing: border-box;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	float: none;
+}
+
+.tabs-switcher {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 200000;
+	pointer-events: none;
+
+	.tabs-switcher__wrapper {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		transition: background-color .3s linear;
+
+		font-size: 16px;
+		line-height: 18px;
+		color: #777;
+
+		&.active {
+			pointer-events: all;
+		}
+
+		.tabs-switcher__content {
+			position: relative;
+			display: none;
+			width: 80vw;
+			max-width: 1200px;
+			height: 75vh;
+			max-height: 1000px;
+			padding: 25px;
+			box-sizing: border-box;
+			background: rgba(255, 255, 255, 0.9);
+			border: 1px solid #ddd;
+		}
+
+		&.active {
+			background: rgba(0, 0, 0, 0.3);
+
+			.tabs-switcher__content {
+				display: block;
+			}
+
+		}
+
+		.tabs-switcher__components {
+
+			height: 100%;
+
+			.tabs-switcher__tabs {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: stretch;
+				height: 100%;
+			}
+
+		}
+
+	}
+
+
+}
