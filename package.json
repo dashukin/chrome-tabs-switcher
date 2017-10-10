@@ -45,14 +45,16 @@
     "gulp-zip": "^3.2.0",
     "hjson": "^2.4.1",
     "keymirror": "^0.1.1",
-    "material-ui": "^0.16.7",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.2",
+    "material-ui": "^1.0.0-beta.16",
+    "material-ui-icons": "^1.0.0-beta.15",
+    "progress-bar-webpack-plugin": "^1.10.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
     "react-tap-event-plugin": "^2.0.1",
-    "redux": "^3.6.0",
+    "redux": "^3.7.2",
     "run-sequence": "^1.2.2",
-    "webpack": "^2.2.1",
+    "webpack": "^3.6.0",
     "yargs": "^6.6.0"
   }
 }
